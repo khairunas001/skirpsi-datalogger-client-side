@@ -1,24 +1,20 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Form from './components/input'
+import Table from './components/tabel';
+import Grafik from './components/grafik';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='judul'>
+        <h1>Pengembangan Data Logger pada Interfacing Kontroller Temperature</h1>
+      </div>
+      <Grafik></Grafik>
+      <Form></Form>
+      <Table></Table>
     </div>
+
   );
 }
 
