@@ -6,7 +6,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #f8ffff;
 }
 
 .App {
@@ -33,15 +33,16 @@ body {
   padding: 10px 20px;
   cursor: pointer;
   border: none;
-  background-color: #007bff;
+  background-color: #ffffff;
   color: white;
   border-radius: 5px;
   transition: background-color 0.3s ease;
   font-size: 16px;
+  color: #000000;
 }
 
 .navbar button:hover {
-  background-color: #0056b3;
+  box-shadow: 2px 5px 10px #868686;
 }
 
 .content {
