@@ -7,7 +7,7 @@ function Form(){
     const [tanggal, setTanggal]=useState('');
     const [waktu, setWaktu]=useState('');
     const [suhu, setSuhu]=useState(0);
-    const URL = "http://localhost:3000";
+    const URL = process.env.REACT_APP_API_URL_2;
 
     const addHandler = () =>{
         axios ({
