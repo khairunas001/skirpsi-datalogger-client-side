@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    padding: 0 20rem; /* Jarak dari batas luar container ke kolom */
+    gap: 2rem; /* Jarak antar kolom */
+    
+  }
+  
+  .column {
+    flex: 1; /* Membuat kolom memiliki ukuran yang sama */
+    margin: 0 1rem; /* Jarak antar kolom, setengah dari total jarak antar kolom yang diinginkan */
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  .box {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    min-height: 80px; /* Menentukan tinggi minimal kotak */
+    border-radius: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  

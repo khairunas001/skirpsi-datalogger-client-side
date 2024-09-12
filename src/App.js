@@ -1,35 +1,9 @@
-// import React from 'react';
-// import './App.css';
-// import Form from './components/input'
-// import Table from './components/tabel';
-// import Grafik from './components/grafik';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <div className='judul'>
-//         <h1>Pengembangan Data Logger pada Interfacing Kontroller Temperature</h1>
-//       </div>
-//       <div>
-//         <Form></Form>
-//       </div>
-//       <div className='grafik'>
-//         <Grafik></Grafik>
-//       </div>
-//       <div className='tabel'>
-//         <Table></Table>
-//       </div>
-//     </div>
-
-//   );
-// }
-
-// export default App;
-
 import React, { useState } from 'react';
 import Form from './components/input';
 import Table from './components/tabel';
 import Grafik from './components/grafik';
+import TwoColumnComponent from './components/TwoColumnComponent';
+import SendSetValue from './components/sendSetValue';
 import './App.css';
 
 function App() {
@@ -62,6 +36,7 @@ function App() {
         return null;
     }
   };
+  
 
   return (
     <div className="App">
@@ -69,7 +44,11 @@ function App() {
         <h1>Pengembangan Data Logger pada Interfacing Kontroller Temperature</h1>
       </div>
       <div>
-        <Form />
+        {/* <Form /> */}
+        <SendSetValue></SendSetValue>
+      </div>
+      <div>
+        <TwoColumnComponent></TwoColumnComponent>
       </div>
       <div className="navbar">
         <button onClick={() => setView('table')}>Table</button>
