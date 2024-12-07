@@ -45,7 +45,7 @@ function App() {
       </div>
       <div>
         {/* <Form /> */}
-        <SendSetValue></SendSetValue>
+        {/* <SendSetValue></SendSetValue> */}
       </div>
       <div>
         <TwoColumnComponent></TwoColumnComponent>

@@ -1,27 +1,41 @@
 .container {
-    display: flex;
-    padding: 0 20rem; /* Jarak dari batas luar container ke kolom */
-    gap: 2rem; /* Jarak antar kolom */
-    
-  }
-  
-  .column {
-    flex: 1; /* Membuat kolom memiliki ukuran yang sama */
-    margin: 0 1rem; /* Jarak antar kolom, setengah dari total jarak antar kolom yang diinginkan */
-  }
-  
-  .label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-  }
-  
-  .box {
-    border: 1px solid #ccc;
-    padding: 1rem;
-    min-height: 80px; /* Menentukan tinggi minimal kotak */
-    border-radius: 1rem;
-    font-size: 2rem;
-    font-weight: bold;
-  }
-  
+  display: flex;
+  flex-direction: column; /* Menyusun elemen secara vertikal */
+  align-items: center; /* Pusatkan konten secara horizontal */
+  padding: 0 20rem; /* Jarak dari batas luar container */
+  gap: 2rem; /* Jarak antar elemen di dalam container */
+}
+
+.time-label {
+  text-align: center;
+  margin-bottom: 1rem; /* Jarak antara waktu dan kolom */
+  font-size: 1.5rem; /* Ukuran teks lebih besar */
+}
+
+.column-container {
+  display: flex; /* Menyusun kolom secara horizontal */
+  justify-content: center; /* Pusatkan kedua kolom */
+  gap: 2rem; /* Jarak antara kolom */
+  width: 100%; /* Buat lebar kolom penuh */
+}
+
+.column {
+  flex: 1; /* Membuat kolom memiliki ukuran yang sama */
+  margin: 0 1rem; /* Jarak antar kolom */
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.box {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  min-height: 80px; /* Menentukan tinggi minimal kotak */
+  border-radius: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center; /* Pusatkan teks dalam kotak */
+}

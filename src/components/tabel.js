@@ -57,7 +57,7 @@ function Table() {
                         ))
                     ) : (
                         <tr>
-                            <td colSpan="3">Tidak ada pembacaan data</td>
+                            <td colSpan="4">Tidak ada pembacaan data</td>
                         </tr>
                     )}
                 </tbody>
