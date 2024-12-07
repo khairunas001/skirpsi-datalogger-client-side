@@ -3,6 +3,7 @@ import Form from './components/input';
 import Table from './components/tabel';
 import Grafik from './components/grafik';
 import TwoColumnComponent from './components/TwoColumnComponent';
+import GetMyLogger from './components/GetMyLogger';
 import SendSetValue from './components/sendSetValue';
 import './App.css';
 
@@ -15,11 +16,11 @@ function App() {
         return <Table />;
       case 'grafik':
         return (
-        <div>
-          <div className='grafikOnly'>
+          <div>
+            <div className='grafikOnly'>
               <Grafik></Grafik>
+            </div>
           </div>
-        </div>
         );
       case 'both':
         return (
@@ -32,11 +33,17 @@ function App() {
             </div>
           </div>
         );
+      case 'get-loggers':
+        return (
+          <div className="App">
+            <h1>Data Logger App</h1>
+            <GetMyLogger />
+          </div>
+        ); // Tambahkan tampilan sesuai kebutuhan
       default:
         return null;
     }
   };
-  
 
   return (
     <div className="App">
@@ -54,6 +61,7 @@ function App() {
         <button onClick={() => setView('table')}>Table</button>
         <button onClick={() => setView('grafik')}>Grafik</button>
         <button onClick={() => setView('both')}>Grafik & Table</button>
+        <button onClick={() => setView('get-loggers')}>Get Loggers</button> {/* Tombol baru */}
       </div>
       <div className='content'>
         {renderView()}
