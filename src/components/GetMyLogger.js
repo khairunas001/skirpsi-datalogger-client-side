@@ -51,74 +51,89 @@ const GetMyLogger = () => {
     }
   };
 
-  return (
-    <div className='table'>
-      <div className="form-container">
-        <h2>Masukkan Waktu Logging</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="tanggal">Tanggal:</label>
-            <input
-              type="date"
-              id="tanggal"
-              name="tanggal"
-              value={formData.tanggal}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="waktu_awal">Waktu Mulai (24 Jam):</label>
-            <input
-              type="time"
-              id="waktu_awal"
-              name="waktu_awal"
-              value={formData.waktu_awal}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="waktu_akhir">Waktu Berakhir (24 Jam):</label>
-            <input
-              type="time"
-              id="waktu_akhir"
-              name="waktu_akhir"
-              value={formData.waktu_akhir}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <button type="submit">Kirim</button>
-        </form>
-      </div>
+  // Fungsi untuk mengunduh log dalam format JSON
+  const downloadLogsAsJSON = () => {
+    const jsonString = JSON.stringify(logs, null, 2); // Indentasi 2 spasi untuk kejelasan
+    const blob = new Blob([jsonString], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `logs_${formData.tanggal}_${formData.waktu_awal}_${formData.waktu_akhir}.json`;
+    link.click();
+    URL.revokeObjectURL(url); // Membersihkan URL blob setelah digunakan
+  };
 
+  return (
+    <div className="table">
+      <div className="form-wrapper">
+        <div className="form-container">
+          <h2>Masukkan Waktu Logging</h2>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="tanggal">Tanggal:</label>
+              <input
+                type="date"
+                id="tanggal"
+                name="tanggal"
+                value={formData.tanggal}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="waktu_awal">Waktu Mulai (24 Jam):</label>
+              <input
+                type="time"
+                id="waktu_awal"
+                name="waktu_awal"
+                value={formData.waktu_awal}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="waktu_akhir">Waktu Berakhir (24 Jam):</label>
+              <input
+                type="time"
+                id="waktu_akhir"
+                name="waktu_akhir"
+                value={formData.waktu_akhir}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <button type="submit">Kirim</button>
+          </form>
+        </div>
+        <button onClick={downloadLogsAsJSON} className="download-button">Download JSON</button>
+      </div>
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      
       {logs.length > 0 && (
-        <table className='center-table'>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Tanggal</th>
-              <th>Waktu</th>
-              <th>Suhu</th>
-              <th>Set Value</th>
-            </tr>
-          </thead>
-          <tbody>
-            {logs.map((log) => (
-              <tr key={log.id}>
-                <td>{log.id}</td>
-                <td>{log.tanggal}</td>
-                <td>{log.waktu}</td>
-                <td>{log.suhu}</td>
-                <td>{log.sv}</td>
+        <div>
+          <table className="center-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Tanggal</th>
+                <th>Waktu</th>
+                <th>Suhu</th>
+                <th>Set Value</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {logs.map((log) => (
+                <tr key={log.id}>
+                  <td>{log.id}</td>
+                  <td>{log.tanggal}</td>
+                  <td>{log.waktu}</td>
+                  <td>{log.suhu}</td>
+                  <td>{log.sv}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );
