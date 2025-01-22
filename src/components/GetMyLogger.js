@@ -28,28 +28,45 @@ const GetMyLogger = () => {
   };
 
   // Handler untuk submit form
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
-
+  
     // Format data sebelum dikirim ke API
     const formattedTanggal = formData.tanggal;
     const formattedWaktuAwal = formatTime(formData.waktu_awal);
     const formattedWaktuAkhir = formatTime(formData.waktu_akhir);
-
+  
     // Bangun URL dengan query parameter
-    const url = `http://localhost:3000/loggers/logs-by-date-and-time-range?tanggal=${formattedTanggal}&waktu_awal=${formattedWaktuAwal}&waktu_akhir=${formattedWaktuAkhir}`;
-
-    try {
-      const response = await axios.get(url);
-      setLogs(response.data.data);
-    } catch (err) {
-      setError('Error fetching data. Please try again.');
-    } finally {
-      setLoading(false);
-    }
-  };
+    const queryURL = `${process.env.REACT_APP_API_URL_2}/loggers/logs-by-date-and-time-range`;
+    const params = {
+      tanggal: formattedTanggal,
+      waktu_awal: formattedWaktuAwal,
+      waktu_akhir: formattedWaktuAkhir,
+    };
+  
+    axios({
+      method: 'GET',
+      url: queryURL,
+      params, // Mengirim parameter query sebagai objek
+    })
+      .then((response) => {
+        if (response.data.status === 'success') {
+          setLogs(response.data.data); // Mengatur state logs
+        } else {
+          setLogs([]); // Kosongkan logs jika tidak ada data ditemukan
+          setError('No logs found for the specified range.');
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setError('Error fetching data. Please try again.');
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };  
 
   // Fungsi untuk mengunduh log dalam format JSON
   const downloadLogsAsJSON = () => {
